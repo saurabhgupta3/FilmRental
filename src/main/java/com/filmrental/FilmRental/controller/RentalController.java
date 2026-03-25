@@ -16,8 +16,5 @@ public class RentalController {
         this.rentalService = rentalService;
     }
 
-    @GetMapping
-    public List<Rental> getAllRentals() {
-        return rentalService.getAllRentals();
-    }
+
 }
