@@ -20,4 +20,9 @@ public class FilmServiceImpl implements FilmService {
     public List<Film> getAllFilms() {
         return filmRepository.findAll();
     }
+
+    @Override
+    public List<Film> getFilmByTitle(String title) {
+        return filmRepository.findByTitle(title);
+    }
 }
