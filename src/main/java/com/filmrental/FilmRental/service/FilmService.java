@@ -1,0 +1,9 @@
+package com.filmrental.FilmRental.service;
+
+import java.util.List;
+
+import com.filmrental.FilmRental.model.Film;
+
+public interface FilmService {
+	List<Film> getAllFilms();
+}
