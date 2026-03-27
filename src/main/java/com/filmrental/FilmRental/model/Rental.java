@@ -2,9 +2,14 @@ package com.filmrental.FilmRental.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import lombok.*;
 
 @Entity
 @Table(name = "rental")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Rental {
 
     @Id
@@ -21,47 +26,5 @@ public class Rental {
     private Integer inventoryId;
 
     @Column(name = "customer_id")
-    private Integer customerId;
-
-    // ===== GETTERS =====
-    public Integer getRentalId() {
-        return rentalId;
-    }
-
-    public LocalDateTime getRentalDate() {
-        return rentalDate;
-    }
-
-    public LocalDateTime getReturnDate() {
-        return returnDate;
-    }
-
-    public Integer getInventoryId() {
-        return inventoryId;
-    }
-
-    public Integer getCustomerId() {
-        return customerId;
-    }
-
-    // ===== SETTERS =====
-    public void setRentalId(Integer rentalId) {
-        this.rentalId = rentalId;
-    }
-
-    public void setRentalDate(LocalDateTime rentalDate) {
-        this.rentalDate = rentalDate;
-    }
-
-    public void setReturnDate(LocalDateTime returnDate) {
-        this.returnDate = returnDate;
-    }
-
-    public void setInventoryId(Integer inventoryId) {
-        this.inventoryId = inventoryId;
-    }
-
-    public void setCustomerId(Integer customerId) {
-        this.customerId = customerId;
-    }
+    private Short customerId;
 }

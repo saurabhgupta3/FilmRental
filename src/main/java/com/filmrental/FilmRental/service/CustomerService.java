@@ -4,6 +4,6 @@ import com.filmrental.FilmRental.model.Customer;
 import java.util.List;
 
 public interface CustomerService {
-    Customer getCustomerById(Long id);
+    Customer getCustomerById(Integer id);
     List<Customer> getAllCustomers();
 }

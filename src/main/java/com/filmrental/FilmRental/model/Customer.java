@@ -2,18 +2,21 @@ package com.filmrental.FilmRental.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import lombok.*;
 
 @Entity
 @Table(name = "customer")
+@Data   // 🔥 includes Getter, Setter, toString, equals, hashCode
+@NoArgsConstructor
+@AllArgsConstructor
 public class Customer {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customer_id")
-    private Long customerId;
+    private Short customerId;
 
     @Column(name = "store_id", nullable = false)
-    private Integer storeId;
+    private Byte storeId;
 
     @Column(name = "first_name", nullable = false)
     private String firstName;
@@ -25,7 +28,7 @@ public class Customer {
     private String email;
 
     @Column(name = "address_id", nullable = false)
-    private Integer addressId;
+    private Short addressId;
 
     @Column(name = "active", nullable = false)
     private Boolean active;
@@ -35,78 +38,4 @@ public class Customer {
 
     @Column(name = "last_update")
     private LocalDateTime lastUpdate;
-
-    // 🔹 Getters and Setters
-
-    public Long getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(Long customerId) {
-        this.customerId = customerId;
-    }
-
-    public Integer getStoreId() {
-        return storeId;
-    }
-
-    public void setStoreId(Integer storeId) {
-        this.storeId = storeId;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Integer getAddressId() {
-        return addressId;
-    }
-
-    public void setAddressId(Integer addressId) {
-        this.addressId = addressId;
-    }
-
-    public Boolean getActive() {
-        return active;
-    }
-
-    public void setActive(Boolean active) {
-        this.active = active;
-    }
-
-    public LocalDateTime getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(LocalDateTime createDate) {
-        this.createDate = createDate;
-    }
-
-    public LocalDateTime getLastUpdate() {
-        return lastUpdate;
-    }
-
-    public void setLastUpdate(LocalDateTime lastUpdate) {
-        this.lastUpdate = lastUpdate;
-    }
 }
