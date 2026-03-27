@@ -7,4 +7,5 @@ import com.filmrental.FilmRental.model.Film;
 public interface FilmService {
 	List<Film> getAllFilms();
     List<Film> getFilmByTitle(String title);
+    Film getFilmById(Long filmId);
 }
