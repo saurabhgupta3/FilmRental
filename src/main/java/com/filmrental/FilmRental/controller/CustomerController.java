@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.filmrental.FilmRental.model.Customer;
 import com.filmrental.FilmRental.service.CustomerService;
+import java.util.List;
 
 @RestController
 @RequestMapping("/customers")
@@ -16,5 +17,10 @@ public class CustomerController {
     @GetMapping("/{customerId}")
     public Customer getCustomer(@PathVariable Long customerId) {
         return customerService.getCustomerById(customerId);
+    }
+
+    @GetMapping
+    public List<Customer> getAllCustomers() {
+        return customerService.getAllCustomers();
     }
 }
