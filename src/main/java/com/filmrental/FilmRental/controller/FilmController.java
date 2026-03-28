@@ -35,4 +35,9 @@ public class FilmController {
     public Film getFilmById(@PathVariable Short id) {
         return filmService.getFilmById(id);
     }
+
+    @GetMapping("/{id}/actors")
+    public List<Object[]> getFilmActors(@PathVariable("id") Short filmId) {
+        return filmService.getFilmActorsByFilmId(filmId);
+    }
 }
