@@ -8,4 +8,5 @@ public interface FilmService {
 	List<Film> getAllFilms();
     List<Film> getFilmByTitle(String title);
     Film getFilmById(Short filmId);
+    List<Object[]> getFilmActorsByFilmId(Short filmId);
 }
