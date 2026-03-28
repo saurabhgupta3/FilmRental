@@ -2,10 +2,7 @@ package com.filmrental.FilmRental.controller;
 
 import java.util.List;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.filmrental.FilmRental.model.Film;
 import com.filmrental.FilmRental.service.FilmService;
@@ -28,5 +25,10 @@ public class FilmController {
     @GetMapping("/search")
     public List<Film> getFilmByTitle(@RequestParam String title) {
         return filmService.getFilmByTitle(title);
+    }
+
+    @GetMapping("/{id}")
+    public Film getFilmById(@PathVariable Long id) {
+        return filmService.getFilmById(id);
     }
 }

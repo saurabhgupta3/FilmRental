@@ -5,7 +5,8 @@ import org.springframework.web.bind.annotation.*;
 
 import com.filmrental.FilmRental.model.Customer;
 import com.filmrental.FilmRental.service.CustomerService;
-// REST controller to handle customer-related APIs: get customer by ID and fetch all customers
+import java.util.List;
+
 @RestController
 @RequestMapping("/customers")
 public class CustomerController {
@@ -14,7 +15,12 @@ public class CustomerController {
     private CustomerService customerService;
 
     @GetMapping("/{customerId}")
-    public Customer getCustomer(@PathVariable Long customerId) {
+    public Customer getCustomer(@PathVariable Integer customerId) {
         return customerService.getCustomerById(customerId);
+    }
+
+    @GetMapping
+    public List<Customer> getAllCustomers() {
+        return customerService.getAllCustomers();
     }
 }
