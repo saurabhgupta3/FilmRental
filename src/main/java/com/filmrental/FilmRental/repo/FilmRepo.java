@@ -8,7 +8,7 @@ import com.filmrental.FilmRental.model.Film;
 import java.util.List;
 import java.util.Optional;
 
-public interface FilmRepo extends JpaRepository<Film, Long> {
+public interface FilmRepo extends JpaRepository<Film, Short> {
     List<Film> findByTitle(String title);
-    Optional<Film> findByFilmId(Long filmId);
+    Optional<Film> findByFilmId(Short filmId);
 }

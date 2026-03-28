@@ -29,7 +29,7 @@ public class FilmServiceImpl implements FilmService {
     }
 
     @Override
-    public Film getFilmById(Long filmId) {
+    public Film getFilmById(Short filmId) {
         return filmRepository.findByFilmId(filmId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Film not found"));
     }
