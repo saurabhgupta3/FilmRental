@@ -13,21 +13,32 @@ public class Payment {
     @Column(name = "payment_id")
     private Short paymentId;
 
-    @Column(name = "customer_id")
-    private Short customerId;
+    // ---------------- RELATIONSHIPS ----------------
 
-    @Column(name = "amount")
+    @ManyToOne
+    @JoinColumn(name = "customer_id", nullable = false)
+    private Customer customer;
+
+    @ManyToOne
+    @JoinColumn(name = "rental_id")
+    private Rental rental;
+
+    // ---------------- FIELDS ----------------
+
+    @Column(name = "amount", nullable = false, precision = 5, scale = 2)
     private BigDecimal amount;
 
-    @Column(name = "payment_date")
+    @Column(name = "payment_date", nullable = false)
     private LocalDateTime paymentDate;
 
-    // getters
+    @Column(name = "last_update", insertable = false, updatable = false)
+    private LocalDateTime lastUpdate;
+
+    // ---------------- GETTERS ----------------
+
     public Short getPaymentId() { return paymentId; }
-
-public Short getCustomerId() { return customerId; }
-
-public BigDecimal getAmount() { return amount; }
-
-public LocalDateTime getPaymentDate() { return paymentDate; }
+    public Customer getCustomer() { return customer; }
+    public Rental getRental() { return rental; }
+    public BigDecimal getAmount() { return amount; }
+    public LocalDateTime getPaymentDate() { return paymentDate; }
 }
