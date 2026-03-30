@@ -1,6 +1,7 @@
 package com.filmrental.FilmRental.model;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -50,4 +51,7 @@ public class Film {
 
     @Column(name = "last_update")
     private LocalDateTime lastUpdate;
+
+    @OneToMany(mappedBy = "film", fetch = FetchType.LAZY)
+    private List<FilmCategory> filmCategories;
 }
