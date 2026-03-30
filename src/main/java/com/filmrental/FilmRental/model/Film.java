@@ -18,6 +18,7 @@ public class Film {
     @Column(name = "film_id")
     private Short filmId;
 
+    @Column(name = "title")
     private String title;
 
     private String description;
