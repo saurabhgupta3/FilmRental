@@ -2,7 +2,10 @@ package com.filmrental.FilmRental.controller;
 
 import java.util.List;
 
+import com.filmrental.FilmRental.dto.CustomerPaymentDTO;
+import com.filmrental.FilmRental.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +22,9 @@ public class CustomerController {
 
     @Autowired
     private CustomerService customerService;
+
+    @Autowired
+    private PaymentService paymentService;
    
     private final RentalService rentalService;
     public CustomerController(RentalService rentalService) {
@@ -37,5 +43,10 @@ public class CustomerController {
     @GetMapping("/{id}/rentals")
     public List<CustomerRentalDTO> getCustomerRentals(@PathVariable Short id) {
         return rentalService.getRentalsByCustomerId(id);
+    }
+
+    @GetMapping("/{id}/payments")
+    public ResponseEntity<List<CustomerPaymentDTO>> getCustomerPayments(@PathVariable Short id) {
+        return ResponseEntity.ok(paymentService.getPaymentsByCustomerId(id));
     }
 }
