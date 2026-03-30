@@ -1,8 +1,8 @@
 package com.filmrental.FilmRental.model;
 
 import jakarta.persistence.*;
-import java.time.LocalDateTime;
 import lombok.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "rental")
@@ -22,6 +22,13 @@ public class Rental {
     @Column(name = "return_date")
     private LocalDateTime returnDate;
 
+    // Relationships
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "staff_id")
+    private Staff staff;
+
+    // Optional (recommended for future)
     @Column(name = "inventory_id")
     private Integer inventoryId;
 
