@@ -1,5 +1,6 @@
 package com.filmrental.FilmRental.service;
 
+import com.filmrental.FilmRental.dto.CustomerPaymentDTO;
 import com.filmrental.FilmRental.dto.PaymentDetailsDTO;
 import com.filmrental.FilmRental.dto.PaymentDetailsDTO;
 import com.filmrental.FilmRental.repo.PaymentRepository;
@@ -19,5 +20,10 @@ public class PaymentServiceImpl implements PaymentService {
     @Override
     public List<PaymentDetailsDTO> getPaymentDetails() {
         return paymentRepository.getPaymentDetails();
+    }
+
+    @Override
+    public List<CustomerPaymentDTO> getPaymentsByCustomerId(Short customerId) {
+        return paymentRepository.getPaymentsByCustomerId(customerId);
     }
 }
