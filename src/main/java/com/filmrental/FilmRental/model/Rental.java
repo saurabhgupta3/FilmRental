@@ -32,6 +32,7 @@ public class Rental {
     @Column(name = "inventory_id")
     private Integer inventoryId;
 
-    @Column(name = "customer_id")
-    private Short customerId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
 }

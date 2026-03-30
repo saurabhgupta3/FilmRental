@@ -1,11 +1,13 @@
 package com.filmrental.FilmRental.service;
 
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.filmrental.FilmRental.dto.CustomerRentalDTO;
 import com.filmrental.FilmRental.dto.RentalStaffDTO;
 import com.filmrental.FilmRental.model.Rental;
 import com.filmrental.FilmRental.repo.RentalRepository;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class RentalServiceImpl implements RentalService {
@@ -26,5 +28,9 @@ public class RentalServiceImpl implements RentalService {
     @Override
     public List<RentalStaffDTO> getRentalStaffDetails() {
         return rentalRepository.getRentalWithStaff();
+    }
+    @Override
+    public List<CustomerRentalDTO> getRentalsByCustomerId(Short customerId) {
+        return rentalRepository.findRentalsByCustomerId(customerId);
     }
 }
