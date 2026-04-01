@@ -1,6 +1,7 @@
 package com.filmrental.FilmRental.service;
 
 import com.filmrental.FilmRental.dto.FilmCategoryDTO;
+import com.filmrental.FilmRental.exception.ResourceNotFoundException;
 import com.filmrental.FilmRental.repo.FilmCategoryRepository;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,15 @@ public class FilmCategoryServiceImpl implements FilmCategoryService {
 
     @Override
     public List<FilmCategoryDTO> getCategoriesByFilmId(Short filmId) {
-        return repository.findCategoriesByFilmId(filmId);
+
+        List<FilmCategoryDTO> categories = repository.findCategoriesByFilmId(filmId);
+
+        if (categories.isEmpty()) {
+            throw new ResourceNotFoundException(
+                    "No categories found for film id: " + filmId
+            );
+        }
+
+        return categories;
     }
 }

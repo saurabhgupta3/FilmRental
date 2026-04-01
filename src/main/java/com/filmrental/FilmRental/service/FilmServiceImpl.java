@@ -3,6 +3,7 @@ package com.filmrental.FilmRental.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.filmrental.FilmRental.exception.ResourceNotFoundException;
 import com.filmrental.FilmRental.model.FilmActor;
 import com.filmrental.FilmRental.repo.FilmActorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,20 +45,30 @@ public class FilmServiceImpl implements FilmService {
 
     @Override
     public List<Object[]> getFilmActorsByFilmId(Short filmId) {
+        Film film = filmRepository.findByFilmId(filmId)
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "Film not found with id: " + filmId
+                ));
 
         List<FilmActor> filmActors = filmActorRepository.findByFilm_FilmId(filmId);
 
-        List<Object[]> response = new ArrayList<>();
+        if (filmActors.isEmpty()) {
+            throw new ResourceNotFoundException(
+                    "No actors found for film id: " + filmId
+            );
+        }
 
+        List<Object[]> response = new ArrayList<>();
         for (FilmActor filmActor : filmActors) {
             response.add(new Object[]{
-                    filmActor.getFilm().getFilmId(),
-                    filmActor.getFilm().getTitle(),
+                    film.getFilmId(),
+                    film.getTitle(),
                     filmActor.getActor().getActorId(),
                     filmActor.getActor().getFirstName(),
                     filmActor.getActor().getLastName()
             });
         }
-       return response;
+
+        return response;
     }
 }
