@@ -29,8 +29,16 @@ public class RentalServiceImpl implements RentalService {
     // NEW METHOD
     @Override
     public List<RentalStaffDTO> getRentalStaffDetails() {
-        return rentalRepository.getRentalWithStaff();
+
+        List<RentalStaffDTO> rentals = rentalRepository.getRentalWithStaff();
+
+        if (rentals.isEmpty()) {
+            throw new ResourceNotFoundException("No rental-staff details found");
+        }
+
+        return rentals;
     }
+
     @Override
     public List<CustomerRentalDTO> getRentalsByCustomerId(Short customerId) {
     	if (customerId == null) {
