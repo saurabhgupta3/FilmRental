@@ -21,10 +21,6 @@ public class FilmController {
         this.filmService = filmService;
     }
 
-    @GetMapping
-    public List<Film> getAllFilms() throws SQLException {
-        return filmService.getAllFilms();
-    }
 
     @GetMapping("/search")
     public List<Film> getFilmByTitle(@RequestParam String title) {

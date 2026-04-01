@@ -15,11 +15,15 @@ public class Payment {
 
     // ---------------- RELATIONSHIPS ----------------
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "staff_id", nullable = false)
+    private Staff staff;
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "rental_id")
     private Rental rental;
 
@@ -38,6 +42,7 @@ public class Payment {
 
     public Short getPaymentId() { return paymentId; }
     public Customer getCustomer() { return customer; }
+    public Staff getStaff() { return staff; }
     public Rental getRental() { return rental; }
     public BigDecimal getAmount() { return amount; }
     public LocalDateTime getPaymentDate() { return paymentDate; }

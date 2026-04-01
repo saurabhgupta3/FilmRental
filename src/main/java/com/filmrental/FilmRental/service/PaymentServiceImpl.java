@@ -2,7 +2,7 @@ package com.filmrental.FilmRental.service;
 
 import com.filmrental.FilmRental.dto.CustomerPaymentDTO;
 import com.filmrental.FilmRental.dto.PaymentDetailsDTO;
-import com.filmrental.FilmRental.dto.PaymentDetailsDTO;
+import com.filmrental.FilmRental.dto.PaymentStoreDetailsDTO;
 import com.filmrental.FilmRental.repo.PaymentRepository;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +20,11 @@ public class PaymentServiceImpl implements PaymentService {
     @Override
     public List<PaymentDetailsDTO> getPaymentDetails() {
         return paymentRepository.getPaymentDetails();
+    }
+
+    @Override
+    public List<PaymentStoreDetailsDTO> getPaymentStoreDetails() {
+        return paymentRepository.getPaymentStoreDetails();
     }
 
     @Override

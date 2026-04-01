@@ -53,4 +53,7 @@ public class Staff {
     // One staff → many rentals
     @OneToMany(mappedBy = "staff")
     private List<Rental> rentals;
+
+    @OneToMany(mappedBy = "staff")
+    private List<Payment> payments;
 }
