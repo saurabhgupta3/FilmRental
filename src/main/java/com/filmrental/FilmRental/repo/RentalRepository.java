@@ -18,7 +18,7 @@ public interface RentalRepository extends JpaRepository<Rental, Integer> {
             r.rentalId,
             r.rentalDate,
             s.staffId,
-            s.firstName,
+            s.firstName=,
             s.lastName
         )
         FROM Rental r
