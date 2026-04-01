@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.filmrental.FilmRental.dto.StaffStoreDTO;
+import com.filmrental.FilmRental.exception.ResourceNotFoundException;
 import com.filmrental.FilmRental.repo.StaffRepository;
 
 @Service
@@ -18,6 +19,12 @@ public class StaffServiceImpl implements StaffService {
 
     @Override
     public List<StaffStoreDTO> getStaffDetails() {
-        return staffRepository.getStaffWithStoreDetails();
+    	List<StaffStoreDTO> staffList = staffRepository.getStaffWithStoreDetails();
+
+        if (staffList == null || staffList.isEmpty()) {
+            throw new ResourceNotFoundException("No staff details found");
+        }
+
+        return staffList;
     }
 }

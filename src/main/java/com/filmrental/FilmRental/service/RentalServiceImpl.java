@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 
 import com.filmrental.FilmRental.dto.CustomerRentalDTO;
 import com.filmrental.FilmRental.dto.RentalStaffDTO;
+import com.filmrental.FilmRental.exception.MissingFieldException;
+import com.filmrental.FilmRental.exception.ResourceNotFoundException;
 import com.filmrental.FilmRental.model.Rental;
 import com.filmrental.FilmRental.repo.RentalRepository;
 
@@ -31,6 +33,14 @@ public class RentalServiceImpl implements RentalService {
     }
     @Override
     public List<CustomerRentalDTO> getRentalsByCustomerId(Short customerId) {
-        return rentalRepository.findRentalsByCustomerId(customerId);
+    	if (customerId == null) {
+            throw new MissingFieldException("Customer ID is required");
+        }
+    	List<CustomerRentalDTO> rentals = rentalRepository.findRentalsByCustomerId(customerId);
+    	if (rentals == null || rentals.isEmpty()) {
+            throw new ResourceNotFoundException("No rentals found for customer ID: " + customerId);
+        }
+
+        return rentals;
     }
 }
