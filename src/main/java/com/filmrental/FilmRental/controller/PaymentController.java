@@ -1,6 +1,7 @@
 package com.filmrental.FilmRental.controller;
 
 import com.filmrental.FilmRental.dto.PaymentDetailsDTO;
+import com.filmrental.FilmRental.dto.PaymentStoreDetailsDTO;
 import com.filmrental.FilmRental.service.PaymentService;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,5 +20,10 @@ public class PaymentController {
     @GetMapping("/details")
     public List<PaymentDetailsDTO> getPaymentDetails() {
         return paymentService.getPaymentDetails();
+    }
+
+    @GetMapping("/store")
+    public List<PaymentStoreDetailsDTO> getPaymentStoreDetails() {
+        return paymentService.getPaymentStoreDetails();
     }
 }

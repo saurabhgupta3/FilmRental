@@ -2,6 +2,7 @@ package com.filmrental.FilmRental.repo;
 
 import com.filmrental.FilmRental.dto.CustomerPaymentDTO;
 import com.filmrental.FilmRental.dto.PaymentDetailsDTO;
+import com.filmrental.FilmRental.dto.PaymentStoreDetailsDTO;
 import com.filmrental.FilmRental.model.Payment;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.data.repository.query.Param;
@@ -23,6 +24,19 @@ public interface PaymentRepository extends JpaRepository<Payment, Short> {
     FROM Payment p
     """)
     List<PaymentDetailsDTO> getPaymentDetails();
+
+    @Query("""
+    SELECT new com.filmrental.FilmRental.dto.PaymentStoreDetailsDTO(
+        p.paymentId,
+        p.amount,
+        s.staffId,
+        st.storeId
+    )
+    FROM Payment p
+    JOIN p.staff s
+    JOIN s.store st
+    """)
+    List<PaymentStoreDetailsDTO> getPaymentStoreDetails();
 
     @Query("""
     SELECT new com.filmrental.FilmRental.dto.CustomerPaymentDTO(
