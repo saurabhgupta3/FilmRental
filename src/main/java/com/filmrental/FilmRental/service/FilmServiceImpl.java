@@ -21,7 +21,7 @@ public class FilmServiceImpl implements FilmService {
     private FilmActorRepository filmActorRepository;
 
     public FilmServiceImpl(FilmRepo filmRepository, FilmActorRepository filmActorRepository) {
-        this.filmActorRepository = filmActorRepository;
+    	this.filmActorRepository = filmActorRepository;
         this.filmRepository = filmRepository;
     }
 
