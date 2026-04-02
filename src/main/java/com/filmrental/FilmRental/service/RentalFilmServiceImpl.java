@@ -1,6 +1,7 @@
 package com.filmrental.FilmRental.service;
 
 import com.filmrental.FilmRental.dto.RentalFilmDetailsDTO;
+import com.filmrental.FilmRental.exception.ResourceNotFoundException;
 import com.filmrental.FilmRental.repo.RentalFilmRepository;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,14 @@ public class RentalFilmServiceImpl implements RentalFilmService {
 
     @Override
     public List<RentalFilmDetailsDTO> getRentalFilmDetails() {
-        return rentalFilmRepository.findRentalFilmDetails();
+
+        List<RentalFilmDetailsDTO> result = rentalFilmRepository.findRentalFilmDetails();
+
+        // Simple exception handling
+        if (result == null || result.isEmpty()) {
+            throw new ResourceNotFoundException("No rental film details found");
+        }
+
+        return result;
     }
 }
