@@ -18,11 +18,10 @@ import com.filmrental.FilmRental.repo.FilmRepo;
 public class FilmServiceImpl implements FilmService {
 
     private final FilmRepo filmRepository;
-
-    @Autowired
     private FilmActorRepository filmActorRepository;
 
-    public FilmServiceImpl(FilmRepo filmRepository) {
+    public FilmServiceImpl(FilmRepo filmRepository, FilmActorRepository filmActorRepository) {
+    	this.filmActorRepository = filmActorRepository;
         this.filmRepository = filmRepository;
     }
 
