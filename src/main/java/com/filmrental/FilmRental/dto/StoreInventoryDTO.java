@@ -6,7 +6,6 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 public class StoreInventoryDTO {
 
     private Byte storeId;
@@ -14,4 +13,12 @@ public class StoreInventoryDTO {
     private Short filmId;
     private String title;
     private LocalDateTime lastUpdate;
+
+    public StoreInventoryDTO(Byte storeId, Integer inventoryId, Short filmId, String title, LocalDateTime lastUpdate) {
+        this.storeId = storeId;
+        this.inventoryId = inventoryId;
+        this.filmId = filmId;
+        this.title = title;
+        this.lastUpdate = lastUpdate;
+    }
 }

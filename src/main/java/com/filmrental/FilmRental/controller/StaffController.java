@@ -10,7 +10,7 @@ import com.filmrental.FilmRental.dto.StaffStoreDTO;
 import com.filmrental.FilmRental.service.StaffService;
 
 @RestController
-@RequestMapping("/api/staff")
+@RequestMapping("/api/v1/staff")
 public class StaffController {
 
     private final StaffService staffService;
@@ -23,4 +23,6 @@ public class StaffController {
     public List<StaffStoreDTO> getStaffDetails() {
         return staffService.getStaffDetails();
     }
+
+
 }
