@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface StaffRepository extends JpaRepository<Staff, Byte> {
@@ -23,4 +24,6 @@ public interface StaffRepository extends JpaRepository<Staff, Byte> {
         JOIN s.address a
     """)
     List<StaffStoreDTO> getStaffWithStoreDetails();
+
+    Optional<Staff> findByUsername(String username);
 }

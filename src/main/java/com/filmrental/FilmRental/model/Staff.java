@@ -40,6 +40,12 @@ public class Staff {
     @Column(name = "active")
     private Boolean active;
 
+    @Column(name = "username")
+    private String username;
+
+    @Column(name = "password")
+    private String password;
+
     // MANY staff → ONE store
     @ManyToOne
     @JoinColumn(name = "store_id")

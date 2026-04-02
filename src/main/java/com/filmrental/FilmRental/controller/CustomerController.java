@@ -17,7 +17,7 @@ import com.filmrental.FilmRental.service.CustomerService;
 import com.filmrental.FilmRental.service.RentalService;
 
 @RestController
-@RequestMapping("/api/customers")
+@RequestMapping("/api/v1/customers")
 public class CustomerController {
 
     @Autowired

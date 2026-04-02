@@ -13,7 +13,7 @@ import com.filmrental.FilmRental.model.Film;
 import com.filmrental.FilmRental.service.FilmService;
 
 @RestController
-@RequestMapping("/api/films")
+@RequestMapping("/api/v1/films")
 public class FilmController {
 
     private final FilmService filmService;
